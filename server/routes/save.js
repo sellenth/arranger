@@ -1,4 +1,5 @@
 var express = require('express');
+var transform  = require('./transform');
 var router = express.Router();
 var fs = require('fs');
 
@@ -9,12 +10,10 @@ router.get('/', function(req, res, next) {
 
 /* POST */
 router.post('/', function (req, res) {
-  console.log('waddup thugg');
   var img = req.body.value;
   var img = img.split(',')[1];
   let buff = new Buffer(img, 'base64');
-  console.log(img);
-  fs.writeFile('pac.png', buff, (err) => {});
+  fs.writeFile('pac.png', buff, (err) => transform.doWork());//{});
 })
 
 module.exports = router;
