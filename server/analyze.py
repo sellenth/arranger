@@ -5,12 +5,12 @@ from skimage.morphology import skeletonize
 from PIL import Image 
 import random
 
-FIELD_WIDTH = 200;
-FIELD_HEIGHT = 100
-NUM_MEMBER = 200
+FIELD_WIDTH = 793;
+FIELD_HEIGHT = 363;
 
 img = io.imread('./pac.png');
 img = skeletonize(img);
+
 io.imsave('./pac.png', img);
 
 img = Image.open('./pac.png');
@@ -66,33 +66,33 @@ def write_field_to_file(filename, field):
         f.close();
 
 
-random.seed();
+#random.seed();
 
-count = 0;
+#count = 0;
 
-for j in range(img.height):
-    for i in range(img.width):
-        if px[i,j][3]:
-            count += 1;
-
-arr = [];
-for i in range(FIELD_HEIGHT):
-    arr.append([]);
-    for j in range(FIELD_WIDTH):
-        arr[i].append(0);
-
-factor = count / NUM_MEMBER;
-field = [];
+#for j in range(img.height):
+#    for i in range(img.width):
+#        if px[i,j][3]:
+#            count += 1;
+#
+#arr = [];
+#for i in range(FIELD_HEIGHT):
+#    arr.append([]);
+#    for j in range(FIELD_WIDTH):
+#        arr[i].append(0);
+#
+#factor = count / NUM_MEMBER;
+#field = [];
 
 pure_coords = [];
 
 count = 0;
 for j in range(img.height):
-    for i in range(img.width):
-        if px[i,j][3] and random.randrange(0, math.ceil(factor)) == 0:
+    for i in range(img.height):
+        if px[i,j][3]: #and random.randrange(0, math.ceil(factor)) == 0:
             pure_coords.append((i,j));
-            arr[j][i] = (i, j); 
-            field.append(coord_translate(i, j));
+            #arr[j][i] = (i, j); 
+            #field.append(coord_translate(i, j));
             count += 1;
 
 try:
@@ -104,5 +104,5 @@ finally:
 
 
 print(count);
-print_field(arr);
-write_field_to_file('out.txt', field);
+#print_field(arr);
+#write_field_to_file('out.txt', field);

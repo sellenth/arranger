@@ -24,6 +24,12 @@ img {
   top: 0;
 }
 
+#myCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 a {
   color: #00B7FF;
 }
