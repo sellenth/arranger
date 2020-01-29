@@ -1,5 +1,7 @@
 var canvas;
 var signaturePad;
+import {emission, socket} from './sock-share.js'
+
 window.addEventListener('DOMContentLoaded', init, false);
 
 function init() {
@@ -10,18 +12,12 @@ function init() {
   });
 }
 
+document.getElementById('save_btn').addEventListener('click', save);
+
 function save(){
   trimCanvas(canvas);
-  //var image = signaturePad.toDataURL().replace("image/png", "image/octet-stream");
   var image = signaturePad.toDataURL();
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", '/save', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify({
-    value: image
-  }));
-  console.log(image);
-
+  emission(image);
 }
 
 function trimCanvas (canvas) {
