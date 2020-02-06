@@ -24,15 +24,15 @@ function set_coords(arr){
   filter_coords(1);
 }
 
-function redraw(sz){
+function redraw(sz, fc){
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-  draw_pts(sz, filtered_coords);
+  draw_pts(sz, fc);
 }
 
 // Update the current slider value (each time you drag the slider handle)
 sz_slider.oninput = function() {
   draw_size = this.value
-  redraw(draw_size);
+  redraw(draw_size, filtered_coords);
 }
 
 function filter_coords(v){
@@ -42,7 +42,7 @@ function filter_coords(v){
 
 march_slider.oninput = function() {
   filter_coords(this.value);
-  redraw(draw_size);
+  redraw(draw_size, filtered_coords);
 }
 
-export {set_coords, draw_pts}
+export {set_coords, redraw}

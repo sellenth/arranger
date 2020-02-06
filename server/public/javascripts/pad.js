@@ -10,33 +10,33 @@ var save_btn = document.getElementById('save_btn');
 var back_btn = document.getElementById('back_btn');
 save_btn.addEventListener('click', save);
 back_btn.addEventListener('click', show);
+var clear_btn = document.getElementById('clear_btn')
 
 function init() {
   plotter.style.display = "none";
-  canvas = document.querySelector("canvas");
+  canvas = document.getElementById('signature-pad');
   signaturePad = new SignaturePad(canvas, {
     minWidth: 5,
     maxWidth: 10,
+  });
+  clear_btn.addEventListener('click', function() {
+    signaturePad.clear();
   });
 }
 
 function show(){
     drawer.style.display = "block";
-    save_btn.style.display = "block";
+    save_btn.style.display = "inline-block";
+    clear_btn.style.display = "inline-block";
     plotter.style.display = "none";
-
 }
 
 function save(){
-  if (drawer.style.display === "none") {
-    drawer.style.display = "block";
-    save_btn.style.display = "block";
-  } else {
-    drawer.style.display = "none";
-    save_btn.style.display = "none";
-    plotter.style.display = "block";
-  }
-  //const data = signaturePad.toDataURL();
+  drawer.style.display = "none";
+  save_btn.style.display = "none";
+  clear_btn.style.display = "none";
+  plotter.style.display = "block";
+
   const data = signaturePad.toData();
   emission(data);
 }
