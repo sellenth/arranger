@@ -4,14 +4,14 @@ block content
   script(src="/socket.io/socket.io.js")
   script(type="module" src="/javascripts/sock-share.js")
 
-  div(class='wrapper' id='drawer')
-    img(src='/images/field.png' width='793' height='363')
-    canvas(id='signature-pad' width="793" height="363")
-  button(id="save_btn") save
-  button(id="clear_btn") clear
-  //input(type="text" id="usr_req")
+  div(id='top-half')
+    div(class='wrapper' id='drawer')
+      img(src='/images/field.png' width='793' height='363')
+      canvas(id='signature-pad' width="793" height="363")
+    button(id="save_btn") save
+    button(id="clear_btn") clear
 
-  div(id='plotter')
+  div(id='bottom-half')
     div(class='wrapper')
       img(src='/images/field.png' width='793' height='363')
       canvas(id='myCanvas' width='793px' height='363px')
