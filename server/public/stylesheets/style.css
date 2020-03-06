@@ -1,35 +1,59 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
+  background-color: rgb(226, 226, 226);
 }
+.screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-.wrapper {
-  position: relative;
-  width: 793px;
-  height: 363px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  width: 80vw;
+  height: 40vw;
+
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-img {
+
+.pad {
   position: absolute;
   left: 0;
   top: 0;
+  width: 100%;
+  height: 100%;
 }
 
-#signature-pad {
+#field_img {
   position: absolute;
   left: 0;
   top: 0;
+  width: 100%;
+  height: 100%;
 }
 
-#myCanvas {
+#buttons-bar {
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 90%;
+  left: 50%;
+
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+
+  width: 80vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-a {
-  color: #00B7FF;
+#btns_screen1{
+  font-size: 2em;
+}
+
+.inline {
+  display: inline-block;
 }

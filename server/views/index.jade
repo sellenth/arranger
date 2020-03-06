@@ -4,23 +4,29 @@ block content
   script(src="/socket.io/socket.io.js")
   script(type="module" src="/javascripts/sock-share.js")
 
-  div(id='top-half')
-    div(class='wrapper' id='drawer')
-      img(src='/images/field.png' width='793' height='363')
-      canvas(id='signature-pad' width="793" height="363")
-    button(id="save_btn") save
-    button(id="clear_btn") clear
+  div(class='screen' id='first')
+    div(class="arena")
+      div(class="field")
+          div(class="upper hashes")
+          div(class="first-mid hashes")
+          div(class="second-mid hashes")
+          div(class="lower hashes")
+    //img(id='field_img' src='/images/field.png')
+    canvas(class='pad' id='signature')
+    canvas(class='pad' id='point')
 
-  div(id='bottom-half')
-    div(class='wrapper')
-      img(src='/images/field.png' width='793' height='363')
-      canvas(id='myCanvas' width='793px' height='363px')
-
-    div(class='slidecontainer')
-      input(type="range" min="1" max="50" value="10" class="slider" id="size")
-      input(type="range" min="1" max="10" value="1" class="slider" id="marchers")
-      p(id="m_num") Number of marchers: 
-    button(id="back_btn") Back
+  
+  div(id='buttons-bar')
+    div(id='btns_screen1')
+      button(class='inline' id="save_btn") Save
+      button(class='inline' id="clear_btn") Clear
+      p(class='inline' id="m_num_header") # Marchers:
+    div(id='btns_screen2')
+      div(class='inline' class='slidecontainer')
+        input(type="range" min="1" max="50" value="10" class="slider" id="size")
+        input(type="range" min="1" max="10" value="1" class="slider" id="marchers")
+        p(id="m_num") Number of marchers: 
+      button(class='inline' id="back_btn") Back
 
   script(type="module" src="/javascripts/point-plot.js")
 
