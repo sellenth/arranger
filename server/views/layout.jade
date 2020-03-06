@@ -2,8 +2,12 @@ doctype html
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/field.css')
+    script(src="/socket.io/socket.io.js")
+    script(type="module" src="/javascripts/sock-share.js")
+    script(type="module" src="/javascripts/bootstrap.bundle.min.js")
     script(src='https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js')
     script(type="module" src='/javascripts/pad.js')
   body

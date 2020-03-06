@@ -1,9 +1,6 @@
 extends layout
 
 block content
-  script(src="/socket.io/socket.io.js")
-  script(type="module" src="/javascripts/sock-share.js")
-
   div(class='screen' id='first')
     div(class="arena")
       div(class="field")
@@ -17,16 +14,21 @@ block content
 
   
   div(id='buttons-bar')
-    div(id='btns_screen1')
-      button(class='inline' id="save_btn") Save
-      button(class='inline' id="clear_btn") Clear
-      p(class='inline' id="m_num_header") # Marchers:
+    div(id="btns_screen1")
+      div(class="input-group mb-3")
+        div(class="input-group-prepend" id="button-addon3")
+          button(class="btn btn-outline-secondary" type="button" id="save_btn") Save
+          button(class="btn btn-outline-secondary" type="button" id="clear_btn") Clear
+        input(type="text" class="form-control" placeholder="Number of Marchers" aria-label="Example text with two button addons" aria-describedby="button-addon3")
+
     div(id='btns_screen2')
       div(class='inline' class='slidecontainer')
-        input(type="range" min="1" max="50" value="10" class="slider" id="size")
-        input(type="range" min="1" max="10" value="1" class="slider" id="marchers")
+        label(for="size") Display Size
+        input(type="range" min="1" max="50" value="10" class="custom-range" id="size")
+        label(for="marchers") Marcher Density
+        input(type="range" min="1" max="10" value="1" class="custom-range" id="marchers")
         p(id="m_num") Number of marchers: 
-      button(class='inline' id="back_btn") Back
+      button(class="btn btn-outline-secondary" type="button" id="back_btn") Back
 
   script(type="module" src="/javascripts/point-plot.js")
 
