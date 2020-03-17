@@ -19,7 +19,7 @@ block content
         div(class="input-group-prepend" id="button-addon3")
           button(class="btn btn-outline-secondary" type="button" id="save_btn") Save
           button(class="btn btn-outline-secondary" type="button" id="clear_btn") Clear
-        input(type="text" class="form-control" placeholder="Number of Marchers" aria-label="Example text with two button addons" aria-describedby="button-addon3")
+        input(id="m_num_in" type="number" class="form-control" placeholder="Number of Marchers")
 
     div(id='btns_screen2')
       div(class='inline' class='slidecontainer')
@@ -29,6 +29,12 @@ block content
         input(type="range" min="1" max="10" value="1" class="custom-range" id="marchers")
         p(id="m_num") Number of marchers: 
       button(class="btn btn-outline-secondary" type="button" id="back_btn") Back
+
+  div(class="toast" id="toast" role="alert" style='position: absolute; right: 10px; bottom: 0' aria-live="assertive" aria-atomic="true")
+    div(class="toast-header")
+      strong(class="mr-auto") Error!
+    div(class="toast-body") Please enter the number of marchers!
+  
 
   script(type="module" src="/javascripts/point-plot.js")
 

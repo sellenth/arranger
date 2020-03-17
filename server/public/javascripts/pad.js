@@ -9,7 +9,10 @@ let btns1     = document.getElementById('btns_screen1')
 let btns2     = document.getElementById('btns_screen2')
 let save_btn  = document.getElementById('save_btn');
 let back_btn  = document.getElementById('back_btn');
+let toast     = document.getElementById('toast');
 let clear_btn = document.getElementById('clear_btn')
+let march_num_in = document.getElementById("m_num_in");
+var data;
 var signaturePad;
 
 function init() {
@@ -27,6 +30,8 @@ function init() {
   screen2.style.display = "none";
   btns2.style.display = "none";
   resizeCanvas();
+
+  $('#toast').toast({delay: 2000})
 }
 
 function resizeCanvas() {
@@ -37,6 +42,7 @@ function resizeCanvas() {
   signaturePad.clear(); // otherwise isEmpty() might return incorrect value
   screen2.width = screen1.width;
   screen2.height = screen1.height;
+  signaturePad.fromData(data);
 }
 
 window.addEventListener("resize", resizeCanvas);
@@ -47,14 +53,21 @@ function show(){
     screen2.style.display = "none";
     btns2.style.display = "none";
     resizeCanvas();
+    signaturePad.fromData(data);
 }
 
 function save(){
-  screen1.style.display = "none";
-  btns1.style.display = "none";
-  btns2.style.display = "block";
-  screen2.style.display = "block";
-  var data = signaturePad.toData();
-  set_coords(data);
-  //emission(data);
+  if (isNaN(march_num_in.value) || march_num_in.value == ''){
+    $('#toast').toast('show');
+    march_num_in.focus();
+  }
+  else {
+    screen1.style.display = "none";
+    btns1.style.display = "none";
+    btns2.style.display = "block";
+    screen2.style.display = "block";
+    data = signaturePad.toData();
+    set_coords(data);
+    //emission(data);
+  }
 }
