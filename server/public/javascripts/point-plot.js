@@ -72,4 +72,8 @@ march_slider.oninput = function() {
   redraw(draw_size, filtered_coords);
 }
 
-export {set_coords, redraw}
+function getFilteredCoords(){
+  return filtered_coords;
+}
+
+export {set_coords, redraw, getFilteredCoords}

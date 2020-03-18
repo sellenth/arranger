@@ -8,9 +8,9 @@ function emission(msg){
 import {set_coords, redraw} from './point-plot.js'
 
 socket.on('server_msg', function(m){
-  coords = m;
-  set_coords(m);
-  redraw(10, m);
+  $('#toast-success').toast('show');
+  $('.toast-body').html("Your arrangement has been received.");
+  $('#spinner').toggle();
 });
 
 function get_coords(){

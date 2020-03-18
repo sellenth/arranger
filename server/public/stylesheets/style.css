@@ -39,9 +39,17 @@ body {
   align-items: center;
 }
 
-#btns_screen1{
-}
-
 .inline {
   display: inline-block;
+}
+
+#toast-success .toast-header {
+  color: white;
+  background-color: #28a745;
+}
+
+#spinner {
+  position: absolute;
+  left: calc(50% - 3rem);
+  top: calc(50% - 3rem);
 }
