@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  div(class='screen' id='first')
+    div(class="arena")
+      div(class="field")
+          div(class="upper hashes")
+          div(class="first-mid hashes")
+          div(class="second-mid hashes")
+          div(class="lower hashes")
+    //img(id='field_img' src='/images/field.png')
+    canvas(class='pad' id='signature')
+    canvas(class='pad' id='point')
+    div(id="spinner" style="width: 6rem; height: 6rem;" class="spinner-border text-light" role="status")
+      span(class="sr-only") Loading...
+
+  
+  div(id='buttons-bar')
+    div(id="btns_screen1")
+      div(class="input-group mb-3")
+        div(class="input-group-prepend" id="button-addon3")
+          button(class="btn btn-outline-secondary" type="button" id="save_btn") Save
+          button(class="btn btn-outline-secondary" type="button" id="clear_btn") Clear
+        input(id="m_num_in" type="number" class="form-control" placeholder="Number of Marchers")
+
+    div(id='btns_screen2')
+      div(class='inline' class='slidecontainer')
+        label(for="size") Display Size
+        input(type="range" min="1" max="50" value="10" class="custom-range" id="size")
+        label(for="marchers") Marcher Density
+        input(type="range" min="1" max="10" value="1" class="custom-range" id="marchers")
+        p(id="m_num") Number of marchers: 
+      div(class="btn-group" role="group" aria-label="Basic example")
+        button(type="button" class="btn btn-success" id="send_btn") Send
+        button(class="btn btn-outline-secondary" type="button" id="back_btn") Back
+
+  div(class="toast" id="toast" role="alert" style='position: absolute; right: 10px; bottom: 0' aria-live="assertive" aria-atomic="true")
+    div(class="toast-header")
+      strong(class="mr-auto") Error!
+    div(class="toast-body") Please enter the number of marchers!
+
+  div(class="toast" id="toast-success" role="alert" style='position: absolute; right: 10px; bottom: 0' aria-live="assertive" aria-atomic="true")
+    div(class="toast-header")
+      strong(class="mr-auto") Success!
+    div(class="toast-body") Your arrangement has been received.
+  
+  
+
+  script(type="module" src='/javascripts/pad.js')
+  script(type="module" src="/javascripts/point-plot.js")
+
+
