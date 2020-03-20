@@ -17,18 +17,25 @@ block content
     div(id="btns_screen1")
       div(class="input-group mb-3")
         div(class="input-group-prepend" id="button-addon3")
-          button(class="btn btn-outline-secondary" type="button" id="save_btn") Whoops
-          button(class="btn btn-outline-secondary" type="button" id="clear_btn") Clear
-        input(id="m_num_in" type="number" class="form-control" placeholder="Number of Marchers")
+          button(class="btn btn-outline-secondary" type="button" id="get_btn") Get Info
+        input(id="m_num_in" type="number" class="form-control" placeholder="Enter Position #")
 
     div(id='btns_screen2')
-      div(class='inline' class='slidecontainer')
+      h1(class='inline') X: 
+      h1(id="x_label" class='inline') wow
+      p(class='inline') yards
+      br
+      h1(class='inline') Y: 
+      h1(id="y_label" class='inline') wow
+      p(class='inline') yards
+
+      div(class='inline' style="display: none" class='slidecontainer')
         label(for="size") Display Size
         input(type="range" min="1" max="50" value="10" class="custom-range" id="size")
         label(for="marchers") Marcher Density
         input(type="range" min="1" max="10" value="1" class="custom-range" id="marchers")
         p(id="m_num") Number of marchers: 
-      div(class="btn-group" role="group" aria-label="Basic example")
+      div(class="btn-group" style="display: none" role="group" aria-label="Basic example")
         button(type="button" class="btn btn-success" id="send_btn") Send
         button(class="btn btn-outline-secondary" type="button" id="back_btn") Back
 
