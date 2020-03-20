@@ -72,7 +72,7 @@ function save(){
     btns1.style.display = "none";
     btns2.style.display = "block";
     indicate(march_num_in.value, data);
-    $('#x_label').html(Math.floor(data[march_num_in.value]['x'] / fetched_x * 100))
-    $('#y_label').html(Math.floor(data[march_num_in.value]['y'] / fetched_y * 53))
+    $('#x_label').html(Math.floor(data[march_num_in.value - 1]['x'] / fetched_x * 100))
+    $('#y_label').html(Math.floor(data[march_num_in.value - 1]['y'] / fetched_y * 53))
   }
 }
