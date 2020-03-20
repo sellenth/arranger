@@ -1,4 +1,4 @@
-import {emission} from './sock-share.js'
+import {emission, get_from_db} from './sock-share.js'
 import {set_coords, getFilteredCoords} from './point-plot.js'
 
 window.addEventListener('DOMContentLoaded', init, false);
@@ -16,6 +16,9 @@ var data = [];
 var signaturePad;
 
 function init() {
+  get_from_db();
+
+  /*
   signaturePad = new SignaturePad(screen1, {
     minWidth: 5,
     maxWidth: 10,
@@ -28,14 +31,24 @@ function init() {
     signaturePad.clear();
   });
 
-  screen2.style.display = "none";
-  btns2.style.display = "none";
   resizeCanvas();
+  */
 
   $('#toast').toast({delay: 3000})
   $('#toast-success').toast({delay: 3000})
   $('#spinner').toggle(false);
 }
+
+function update_view(db_dat){
+  // db_dat[0] is width of record
+  // db_dat[1] is height of record
+  // db_dat[the rest] is x then y coordinates of points
+  // just need to draw these points onto the pad
+  // then link the text box to tell field location of particular point
+  // then done ;)
+}
+
+export {update_view};
 
 function resizeCanvas() {
   var ratio =  Math.max(window.devicePixelRatio || 1, 1);
@@ -107,13 +120,5 @@ function send(){
     var arr = [screen2.clientWidth, screen2.clientHeight];
     arr = minify_dat(dat, arr);
     emission(arr);
-
-    // need to save this dat into a db 
-    // need to be able to fetch entry from db and scale all coords by a ratio of curr_pad_size : entry_pad_size
-    // then reformat entries into this form so it can be loaded into sig pad
-    //  { x: 583.875, y: 310.09375, time: 1584490988674, color: 'black' },
-
-    // alternatively, can just perform the scaling and then simply tell marcher where to go without showing them
-    // what part of the formation they are in
   }
 }

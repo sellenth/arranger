@@ -23,14 +23,33 @@ app.set('port', port);
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 var proc = require('../transform-router');
+var db = require('../database.js')
 
 io.on('connection', function(socket){
   console.log('\ta user has connected');
   socket.on('pic_dat', function(dat){
-    console.log(dat);
-    var fd = proc(dat);
+    //var fd = proc(dat);
+    var insert = 'INSERT INTO arrangements (data) VALUES (?)'
+    dat = JSON.stringify(dat);
+    db.run(insert, [dat], (err) => {
+      if (err) {
+        console.log("Insert error: " + err) 
+      }
+    });
     io.emit('server_msg', 'msg_received');
   });
+
+  socket.on('arr_req', function(){
+    var sql = "select * from arrangements"
+    db.all(sql, (err, rows) => {
+      if (err) {
+        io.emit('get_response', "couldn't get a row :(");
+      }
+      io.emit('get_res', rows[rows.length - 1].data);
+    });
+    
+  })
+
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });

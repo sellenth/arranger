@@ -8,8 +8,6 @@ block content
           div(class="first-mid hashes")
           div(class="second-mid hashes")
           div(class="lower hashes")
-    //img(id='field_img' src='/images/field.png')
-    canvas(class='pad' id='signature')
     canvas(class='pad' id='point')
     div(id="spinner" style="width: 6rem; height: 6rem;" class="spinner-border text-light" role="status")
       span(class="sr-only") Loading...
@@ -19,7 +17,7 @@ block content
     div(id="btns_screen1")
       div(class="input-group mb-3")
         div(class="input-group-prepend" id="button-addon3")
-          button(class="btn btn-outline-secondary" type="button" id="save_btn") Save
+          button(class="btn btn-outline-secondary" type="button" id="save_btn") Whoops
           button(class="btn btn-outline-secondary" type="button" id="clear_btn") Clear
         input(id="m_num_in" type="number" class="form-control" placeholder="Number of Marchers")
 
@@ -46,7 +44,8 @@ block content
   
   
 
-  script(type="module" src='/javascripts/pad.js')
+
+  script(type="module" src='/javascripts/load.js')
   script(type="module" src="/javascripts/point-plot.js")
 
 
